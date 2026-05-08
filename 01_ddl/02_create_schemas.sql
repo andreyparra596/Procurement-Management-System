@@ -12,7 +12,7 @@ GO
 BEGIN TRY
 BEGIN TRAN;
 
-IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name =N'raw')
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name =N'raw')
 BEGIN
 EXEC('CREATE SCHEMA [raw] AUTHORIZATION [dbo]');
 PRINT 'Completado: Schema [raw] creado.';
@@ -22,7 +22,7 @@ BEGIN
 PRINT 'Schema [raw] ya existe. ';
 END
 
-IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name =N'staging')
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name =N'staging')
 BEGIN
 EXEC('CREATE SCHEMA [staging] AUTHORIZATION [dbo]');
 PRINT 'Completado: Schema [staging] creado.';
@@ -32,7 +32,7 @@ BEGIN
 PRINT 'Schema [staging] ya existe. ';
 END
 
-IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name =N'curated')
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name =N'curated')
 BEGIN
 EXEC('CREATE SCHEMA [curated] AUTHORIZATION [dbo]');
 PRINT 'Completado: Schema [curated] creado.';
@@ -42,7 +42,7 @@ BEGIN
 PRINT 'Schema [curated] ya existe. ';
 END
 
-IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name =N'analytics')
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name =N'analytics')
 BEGIN
 EXEC('CREATE SCHEMA [analytics] AUTHORIZATION [dbo]');
 PRINT 'Completado: Schema [analytics] creado.';
@@ -52,7 +52,7 @@ BEGIN
 PRINT 'Schema [analytics] ya existe. ';
 END
 
-IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name =N'governance')
+IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name =N'governance')
 BEGIN
 EXEC('CREATE SCHEMA [governance] AUTHORIZATION [dbo]');
 PRINT 'Completado: Schema [governance] creado.';
