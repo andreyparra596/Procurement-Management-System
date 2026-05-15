@@ -9,10 +9,11 @@ USE [master];
 GO
 
 
-IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'ProcurementDW')
+IF NOT EXISTS (SELECT 1 FROM sys.databases WHERE name = N'ProcurementDW')
 BEGIN
-    CREATE DATABASE [ProcurementDW];
-    PRINT 'Completado: Base de datos creada exitosamente.';
+    CREATE DATABASE [ProcurementDW] COLLATE SQL_Latin1_General_CP1_CI_AI;
+
+    PRINT 'Completado: Base de datos creada exitosamente con.COLLATE SQL_Latin1_General_CP1_CI_AI';
 END
 ELSE
 BEGIN
@@ -23,13 +24,14 @@ GO
 
 BEGIN TRY
 
-    IF EXISTS (SELECT name FROM sys.databases WHERE name = N'ProcurementDW')
+    IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'ProcurementDW')
     BEGIN
         ALTER DATABASE [ProcurementDW] SET RECOVERY SIMPLE WITH NO_WAIT;
         PRINT 'Configurado: Recovery Model = SIMPLE';
         
         ALTER DATABASE [ProcurementDW] SET AUTO_SHRINK OFF WITH NO_WAIT;
         PRINT 'Configurado: AUTO_SHRINK = OFF';
+
     END
     
 END TRY

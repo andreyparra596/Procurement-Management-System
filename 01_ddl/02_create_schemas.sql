@@ -10,7 +10,7 @@ USE [ProcurementDW];
 GO
 
 BEGIN TRY
-BEGIN TRAN;
+
 
 IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name =N'raw')
 BEGIN
@@ -62,13 +62,13 @@ BEGIN
 PRINT 'Schema [governance] ya existe. ';
 END
 
-COMMIT TRAN;
+
 PRINT 'Completado: 5 schemas fueron creados con exito o ya estaban creados';
 
 END TRY 
 BEGIN CATCH
 
-IF @@TRANCOUNT > 0 ROLLBACK TRAN;
+
 PRINT 'ERROR: no fue posible crear los schemas' + ERROR_MESSAGE();
 THROW;
 END CATCH
